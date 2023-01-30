@@ -1,0 +1,4 @@
+from: markdown
+to: pdf
+template: default.latex
+pdf-engine: lualatex
