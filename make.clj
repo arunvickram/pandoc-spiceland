@@ -64,7 +64,7 @@
 
 
 (defn input-name->output-name [in]
-  (let [[filename] (str/split "documents/at-the-cafe.md" #"\.")]
+  (let [[filename] (str/split in #"\.")]
     (str filename ".pdf")))
 
 (if (empty? *command-line-args*)
