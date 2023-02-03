@@ -61,8 +61,6 @@
     (throw (ex-info msg data)))
   (System/exit 1))
 
-
-
 (defn input-name->output-name [in]
   (let [[filename] (str/split in #"\.")]
     (str filename ".pdf")))
