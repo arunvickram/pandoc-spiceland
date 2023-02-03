@@ -49,7 +49,7 @@
            [:out {:ref "<file>"
                   :desc "The name of the pdf file that will be generated"
                   :alias :o
-                  :default "document.pdf"}]])
+                  }]])
 
 (defn handle-error [{:keys [spec type cause msg option] :as data}]
   (if (= type :org.babashka/cli)
@@ -61,6 +61,12 @@
     (throw (ex-info msg data)))
   (System/exit 1))
 
+
+
+(defn input-name->output-name [in]
+  (let [[filename] (str/split "documents/at-the-cafe.md" #"\.")]
+    (str filename ".pdf")))
+
 (if (empty? *command-line-args*)
   (do
     (println "./make.clj <options>:")
@@ -68,6 +74,7 @@
   (let [options (cli/parse-opts *command-line-args* {:spec spec :error-fn handle-error})
         lang-dir (str "langs/" (:lang options))
         defaults (str "--defaults=" (:defaults options))
-        result (shell "pandoc" defaults (str lang-dir "/prelude.md") (str (:dir options) "/" (:in options)) "-o" (str (:dir options) "/" (:out options)))]
+        outfile (or (:out options) (input-name->output-name (:in options)))
+        result (shell "pandoc" defaults (str lang-dir "/prelude.md") (str (:dir options) "/" (:in options)) "-o" outfile)]
     (when (zero? (:exit result))
-      (println (str "Successfully generated a pdf at: " (:out options))))))
+      (println (str "Successfully generated a pdf at: " outfile)))))
