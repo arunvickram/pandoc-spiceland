@@ -29,7 +29,6 @@
    "tibetan"
    "urdu"])
 
-;; TODO: add command to link locales with texmf folder
 (def spec [[:defaults {:ref "<defaults>"
                        :desc "A replacement defaults.yaml file if you want to use a different defaults file"
                        :alias :D
