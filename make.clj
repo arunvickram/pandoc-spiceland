@@ -48,7 +48,7 @@
            [:out {:ref "<file>"
                   :desc "The name of the pdf file that will be generated"
                   :alias :o
-                  }]])
+                  }]]) 
 
 (defn handle-error [{:keys [spec type cause msg option] :as data}]
   (if (= type :org.babashka/cli)
@@ -58,7 +58,7 @@
         (format "Must choose a supported or semi-supported language. Go to langs"))
       (println msg))
     (throw (ex-info msg data)))
-  (System/exit 1))
+  (System/exit 1)) 
 
 (defn input-name->output-name [in]
   (let [[filename] (str/split in #"\.")]

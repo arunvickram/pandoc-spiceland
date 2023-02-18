@@ -12,4 +12,6 @@ mainfontoptions:
 # - BoldItalicFont=*-BoldItalic
 - Extension=.ttf
 - Renderer=HarfBuzz
+- Alternate = 2 
+- StylisticSet = 2
 ---

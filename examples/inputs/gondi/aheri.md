@@ -1,5 +1,5 @@
 ---
-lang: esg
+lang: gon
 toc: true
 numbersections: true
 include-before:
